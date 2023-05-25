@@ -15,10 +15,10 @@
 
 
 h1 {
-color: white;
-text-align: center;
-font-family: Impact, serif;
-text-shadow: 2px 2px #232b2b;
+    color: white;
+    text-align: center;
+    font-family: Impact, serif;
+    text-shadow: 2px 2px #232b2b;
 
 }
 
@@ -44,7 +44,7 @@ form {
     margin-right: auto;
     margin-top: 5%;
     width: 200px;
-    background-color: rgba(255, 255, 255,.5);
+    background-color: rgba(255, 255, 255, .5);
     border-radius: 10px;
 }
 
@@ -62,7 +62,7 @@ form {
 }
 
 .search-bar:active {
-border: 1px solid black;
+    border: 1px solid black;
 
 }
 
@@ -70,7 +70,7 @@ border: 1px solid black;
     margin-top: 3%;
     height: 15%;
     width: 50%;
-    background-color: rgba(255, 255, 255,.5);
+    background-color: rgba(255, 255, 255, .5);
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -79,7 +79,7 @@ border: 1px solid black;
 
 
 .description-shadow {
-    background-color: rgba(255, 255, 255,.5);
+    background-color: rgba(255, 255, 255, .5);
     height: 12%;
     width: 50%;
     margin-left: auto;
@@ -102,17 +102,17 @@ border: 1px solid black;
 
 button {
     border: 1px solid;
-    border-radius: 10px!important;
+    border-radius: 10px !important;
     width: 20%;
     box-shadow: 5px 5px 5px #232b2b;
 
-    
+
 }
 
 .button {
-        display: flex;
-        justify-content: center;
-        margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
 }
 
 .container {
@@ -122,15 +122,16 @@ button {
     overflow-y: scroll;
     max-height: 400px;
 }
+
 .container-item {
     margin-left: 10%;
     display: flex;
-    justify-content: space-evenly;  
+    justify-content: space-evenly;
     font-size: 30px;
     align-items: center;
-    background-color: rgba(255, 255, 255,.5);
+    background-color: rgba(255, 255, 255, .5);
     border-radius: 10px;
-    width: 80%;   
+    width: 80%;
     margin-bottom: 5px;
 }
 
@@ -139,11 +140,11 @@ button {
 }
 
 .span-item {
-        background-color: white;
-        width: 33%;
-        text-align: center;
-        border-radius: 10px;
-        cursor: pointer;
+    background-color: white;
+    width: 33%;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .span-item:active {
@@ -156,7 +157,7 @@ button {
     border-radius: 10px;
     font-size: 15px;
     width: 100px;
-    max-width: 100px; 
+    max-width: 100px;
     text-align: center;
 }
 
@@ -187,7 +188,7 @@ button {
     right: 0;
     bottom: 0;
     left: 0;
-    
+
 }
 
 .close {
@@ -206,6 +207,7 @@ button {
     width: 15%;
     border-radius: 10px;
 }
+
 #loading {
     text-align: center;
     display: none;

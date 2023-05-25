@@ -18,8 +18,8 @@ function submitForm(e) {
     warningMessage.textContent = '';
     warningMessage.classList.remove("warning-message");
 
-        async function contactApi() {
-            try {
+    async function contactApi() {
+        try {
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
             if (!response.ok) {
                 throw new Error("Error fetching data.");
@@ -28,14 +28,14 @@ function submitForm(e) {
             let obj2 = await response.json();
 
 
-            if(obj2.works.length === 0) {
+            if (obj2.works.length === 0) {
                 throw new Error("Error fetching works.")
             }
 
             bookList.innerHTML = '';
             for (let i = 0; i < obj2.works.length; i++) {
                 key = obj2.works[i].key;
-                const bookItem = document.createElement("div");               
+                const bookItem = document.createElement("div");
                 bookItem.innerHTML = `
                 <img class="image-item" src="https://covers.openlibrary.org/b/id/${obj2.works[i].cover_id}-M.jpg?default=false">
                 <span class="span-item" id="my-span">${obj2.works[i].title}</span>
@@ -54,39 +54,39 @@ function submitForm(e) {
             bookList.innerHTML = '';
             return [];
         }
-     } 
-    
-        contactApi().then(works => {
-            anotherFunction(works);
-        });
-        }
+    }
+
+    contactApi().then(works => {
+        anotherFunction(works);
+    });
+}
 
 function anotherFunction(works) {
-       let keys = works.map(work => work.key);
-        const spanItems = document.querySelectorAll(".span-item");
-        for(let i = 0; i < works.length; i++) {
-            const mySpan = spanItems[i];
-            const key = keys[i];
+    let keys = works.map(work => work.key);
+    const spanItems = document.querySelectorAll(".span-item");
+    for (let i = 0; i < works.length; i++) {
+        const mySpan = spanItems[i];
+        const key = keys[i];
 
-            mySpan.addEventListener("click", () => {
-                fetchUrl(key);
-            });
-        }
+        mySpan.addEventListener("click", () => {
+            fetchUrl(key);
+        });
     }
+}
 
-    async function fetchUrl(key) {
-        let response = await fetch(`https://openlibrary.org${key}.json`);
-        let json = await response.json();
-        bookDescription.innerHTML = `
+async function fetchUrl(key) {
+    let response = await fetch(`https://openlibrary.org${key}.json`);
+    let json = await response.json();
+    bookDescription.innerHTML = `
         <img src="src/x-icon.png" class="close" onclick="closePopUp()">
         <p>${json.description.value || json.description}</p>`
-        popUp.className = "popup";
+    popUp.className = "popup";
 
-    }
+}
 
-    function closePopUp() {
-        bookDescription.innerHTML = '';
-        popUp.classList.remove("popup");
-    }
+function closePopUp() {
+    bookDescription.innerHTML = '';
+    popUp.classList.remove("popup");
+}
 
-    body.addEventListener("click", closePopUp);
+body.addEventListener("click", closePopUp);

@@ -4,6 +4,7 @@ submit.addEventListener("click", submitForm);
 let key;
 const popUp = document.querySelector("#popup");
 const bookDescription = document.querySelector("#book-desc");
+const body = document.querySelector("BODY");
 
 
 function submitForm(e) {
@@ -12,9 +13,21 @@ function submitForm(e) {
 
     const loadingElement = document.querySelector("#loading");
     loadingElement.style.display = "block";
+
         async function contactApi() {
+            try {
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
+            if (!response.ok) {
+                throw new Error("Error fetching data.");
+            }
+
             let obj2 = await response.json();
+
+
+            if(obj2.works = []) {
+                throw new Error("Error fetching works.")
+            }
+
             bookList.innerHTML = '';
             for (let i = 0; i < obj2.works.length; i++) {
                 key = obj2.works[i].key;
@@ -29,12 +42,20 @@ function submitForm(e) {
             loadingElement.style.display = "none";
 
             return obj2.works;
+        } catch (error) {
+            loadingElement.style.display = "none";
+            console.log(error);
+            const warningMessage = document.querySelector("#warning-element");
+            warningMessage.textContent = "Error fetching data. Please try again later.";
+            warningMessage.classList.add("warning-message");
         }
+     } 
     
         contactApi().then(works => {
             anotherFunction(works);
         });
-    }
+        }
+
 function anotherFunction(works) {
        let keys = works.map(work => work.key);
         const spanItems = document.querySelectorAll(".span-item");
@@ -51,7 +72,6 @@ function anotherFunction(works) {
     async function fetchUrl(key) {
         let response = await fetch(`https://openlibrary.org${key}.json`);
         let json = await response.json();
-        console.log(json.description.value || json.description);
         bookDescription.innerHTML = `
         <img src="src/x-icon.png" class="close" onclick="closePopUp()">
         <p>${json.description.value || json.description}</p>`
@@ -63,3 +83,5 @@ function anotherFunction(works) {
         bookDescription.innerHTML = '';
         popUp.classList.remove("popup");
     }
+
+    body.addEventListener("click", closePopUp);

@@ -154,8 +154,9 @@ button {
 .book-description {
   text-align: center;
   position: fixed;
-  top: 250px;
-  left: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 20px;
   width: 800px;
   max-height: 400px;
@@ -188,6 +189,24 @@ button {
   opacity: 0.5;
 }
 
+.gif {
+  width: 15%;
+  border-radius: 10px;
+}
+
 #loading {
+  text-align: center;
   display: none;
+  margin-bottom: 2%;
+}
+
+.warning-message {
+  text-align: center;
+  font-size: 5vh;
+  color: white;
+  background-color: red;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
 }/*# sourceMappingURL=styles.css.map */

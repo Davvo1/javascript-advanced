@@ -77,9 +77,10 @@ function anotherFunction(works) {
 async function fetchUrl(key) {
     let response = await fetch(`https://openlibrary.org${key}.json`);
     let json = await response.json();
+    console.log(json)
     bookDescription.innerHTML = `
         <img src="src/x-icon.png" class="close" onclick="closePopUp()">
-        <p>${json.description.value || json.description}</p>`
+        <p>${json.description?.value || json.description || "Description not available."}</p>`
     popUp.className = "popup";
 
 }

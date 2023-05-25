@@ -68,19 +68,19 @@ form {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .description-shadow {
   background-color: rgba(255, 255, 255, 0.5);
-  height: 10%;
+  height: 12%;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 2%;
 }
 
 .description {
@@ -129,10 +129,61 @@ button {
   width: 100px;
 }
 
-span {
-  margin-right: 25%;
+.span-item {
   background-color: white;
   width: 33%;
   text-align: center;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.span-item:active {
+  opacity: 0.5;
+  transition: 0.5ms;
+}
+
+.author {
+  background-color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  max-width: 100px;
+  text-align: center;
+}
+
+.book-description {
+  text-align: center;
+  position: fixed;
+  top: 250px;
+  left: 350px;
+  font-size: 20px;
+  width: 800px;
+  max-height: 400px;
+  background-color: white;
+  display: block;
+  overflow-y: scroll;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #232b2b;
+}
+
+.popup {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.close {
+  cursor: pointer;
+  width: 20px;
+  float: inline-end;
+  float: right;
+  display: block;
+}
+
+.close:active {
+  opacity: 0.5;
 }/*# sourceMappingURL=styles.css.map */

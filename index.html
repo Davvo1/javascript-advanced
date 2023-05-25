@@ -9,12 +9,14 @@
         <meta name="viewport" content="width=device-width, initial scale=1.0">
     </head>
     <body>
+
 <div class="background">
  <div class="background-image">
-    <div class="title">
+   <div id="popup"> 
+    <div class="title" id="title">
     <h1>BookTok</h1>
     </div>  
-   <div class="textbox-shadow">
+   <div class="textbox-shadow" id="textbox">
     <div class="textbox">
         <form id="form1">
             <input type="text" name="search-bar" placeholder="Start typing here!" class="search-bar" id="input">
@@ -24,18 +26,21 @@
         <button id="submit" form="form1">Submit</button>
     </div>
    </div>
+   <div class="book-description" id="book-desc">   
+</div>
+
    <div class="container" id="book-list">
-    <div class="container-item">
-    </div>
    </div>
-   <div class="description-shadow">
+   <div class="description-shadow" id="description-shadow">
     <div class="description">
-        <p>Input a literary genre above to get a list of books you can read!</p>
+        <p>Input a literary genre above to get a list of books you can read!
+            Click on the title to get a description.
+        </p>
     </div>
    </div>
 </div>       
 </div>        
-
+</div>
         
         
         <script src="/src/index.js"></script>

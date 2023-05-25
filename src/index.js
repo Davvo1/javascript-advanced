@@ -14,6 +14,10 @@ function submitForm(e) {
     const loadingElement = document.querySelector("#loading");
     loadingElement.style.display = "block";
 
+    const warningMessage = document.querySelector("#warning-element");
+    warningMessage.textContent = '';
+    warningMessage.classList.remove("warning-message");
+
         async function contactApi() {
             try {
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
@@ -24,7 +28,7 @@ function submitForm(e) {
             let obj2 = await response.json();
 
 
-            if(obj2.works = []) {
+            if(obj2.works.length === 0) {
                 throw new Error("Error fetching works.")
             }
 
@@ -45,9 +49,10 @@ function submitForm(e) {
         } catch (error) {
             loadingElement.style.display = "none";
             console.log(error);
-            const warningMessage = document.querySelector("#warning-element");
             warningMessage.textContent = "Error fetching data. Please try again later.";
             warningMessage.classList.add("warning-message");
+            bookList.innerHTML = '';
+            return [];
         }
      } 
     

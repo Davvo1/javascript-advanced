@@ -186,4 +186,8 @@ button {
 
 .close:active {
   opacity: 0.5;
+}
+
+#loading {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

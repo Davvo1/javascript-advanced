@@ -9,6 +9,9 @@ const bookDescription = document.querySelector("#book-desc");
 function submitForm(e) {
     const bookGenre = document.querySelector("#input").value.toLowerCase();
     e.preventDefault();
+
+    const loadingElement = document.querySelector("#loading");
+    loadingElement.style.display = "block";
         async function contactApi() {
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
             let obj2 = await response.json();
@@ -23,7 +26,7 @@ function submitForm(e) {
                 bookItem.classList.add("container-item");
                 bookList.append(bookItem);
             }
-
+            loadingElement.style.display = "none";
 
             return obj2.works;
         }
@@ -50,7 +53,7 @@ function anotherFunction(works) {
         let json = await response.json();
         console.log(json.description.value || json.description);
         bookDescription.innerHTML = `
-        <img src="/src/x-icon.png" class="close" onclick="closePopUp()">
+        <img src="src/x-icon.png" class="close" onclick="closePopUp()">
         <p>${json.description.value || json.description}</p>`
         popUp.className = "popup";
 

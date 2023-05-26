@@ -3,7 +3,7 @@ const bookList = document.querySelector("#book-list");
 const popUp = document.querySelector("#popup");
 const bookDescription = document.querySelector("#book-desc");
 const body = document.querySelector("BODY");
-const description = document.querySelector("#description-shadow"); 
+const description = document.querySelector("#description-shadow");
 const title = document.querySelector("#title");
 const textbox = document.querySelector("#textbox");
 

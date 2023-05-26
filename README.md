@@ -12,4 +12,6 @@ The app is completely built with vanilla javascript so there is no need to insta
 
 As said, this web application is built to encourage reading, it was built as the project for my javascript advanced course. By using the textbox to search for a genre a list of books is provided. Clicking on a specific book's title shows its description, helping you find the best suited book for your taste!
 
+#### Link to the web application
 
+https://github.com/Davvo1/javascript-advanced

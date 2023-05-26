@@ -1,11 +1,15 @@
 const submit = document.querySelector("#submit");
 const bookList = document.querySelector("#book-list");
-submit.addEventListener("click", submitForm);
-let key;
 const popUp = document.querySelector("#popup");
 const bookDescription = document.querySelector("#book-desc");
 const body = document.querySelector("BODY");
+const description = document.querySelector("#description-shadow"); 
+const title = document.querySelector("#title");
+const textbox = document.querySelector("#textbox");
 
+
+
+submit.addEventListener("click", submitForm);
 
 function submitForm(e) {
     const bookGenre = document.querySelector("#input").value.toLowerCase();
@@ -20,6 +24,7 @@ function submitForm(e) {
 
     async function contactApi() {
         try {
+            bookList.innerHTML = '';
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
             if (!response.ok) {
                 throw new Error("Error fetching data.");
@@ -32,9 +37,8 @@ function submitForm(e) {
                 throw new Error("Error fetching works.")
             }
 
-            bookList.innerHTML = '';
+
             for (let i = 0; i < obj2.works.length; i++) {
-                key = obj2.works[i].key;
                 const bookItem = document.createElement("div");
                 bookItem.innerHTML = `
                 <img class="image-item" src="https://covers.openlibrary.org/b/id/${obj2.works[i].cover_id}-M.jpg?default=false">
@@ -42,6 +46,8 @@ function submitForm(e) {
                 <span class="author">${obj2.works[i].authors[0].name}</span>`
                 bookItem.classList.add("container-item");
                 bookList.append(bookItem);
+                description.remove();
+
             }
             loadingElement.style.display = "none";
 
@@ -80,14 +86,21 @@ async function fetchUrl(key) {
     console.log(json)
     bookDescription.innerHTML = `
         <img src="src/x-icon.png" class="close" onclick="closePopUp()">
+        <h2>${json.title}</h2>
         <p>${json.description?.value || json.description || "Description not available."}</p>`
     popUp.className = "popup";
+    title.classList.add("opacity");
+    textbox.classList.add("opacity")
+    bookList.classList.add("invisible");
 
 }
 
 function closePopUp() {
     bookDescription.innerHTML = '';
     popUp.classList.remove("popup");
+    title.classList.remove("opacity");
+    textbox.classList.remove("opacity");
+    bookList.classList.remove("invisible");
 }
 
 body.addEventListener("click", closePopUp);

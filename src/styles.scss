@@ -2,14 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
 .background {
     display: flex;
     width: 100%;
-    height: 900px;
+    height: 100vh;
     justify-content: center;
 }
 
@@ -75,6 +75,7 @@ form {
     margin-right: auto;
     border-radius: 10px;
     margin-bottom: 3%;
+
 }
 
 
@@ -105,8 +106,16 @@ button {
     border-radius: 10px !important;
     width: 20%;
     box-shadow: 5px 5px 5px #232b2b;
+}
 
+button:hover{
+    opacity: 0.5;
+    transition: 0.5ms;
+}
 
+button:active {
+    opacity: 0.3;
+    transition: 0.5ms;
 }
 
 .button {
@@ -147,8 +156,12 @@ button {
     cursor: pointer;
 }
 
-.span-item:active {
+.span-item:hover {
     opacity: 0.5;
+    transition: 0.5ms;
+}
+.span-item:active {
+    opacity: 0.3;
     transition: 0.5ms;
 }
 
@@ -175,7 +188,7 @@ button {
     overflow-y: scroll;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #232b2b;
-
+    opacity: 1;
 }
 
 
@@ -199,8 +212,14 @@ button {
     display: block;
 }
 
-.close:active {
+.close:hover {
     opacity: 0.5;
+    transition: 0.5ms;
+}
+
+.close:active {
+    opacity: 0.3;
+    transition: 0.5ms;
 }
 
 .gif {
@@ -225,4 +244,12 @@ button {
     margin-right: auto;
     border-radius: 10px;
     margin-bottom: 1%;
+}
+
+.opacity {
+    opacity: 0.5;
+}
+
+.invisible {
+    visibility: hidden;
 }

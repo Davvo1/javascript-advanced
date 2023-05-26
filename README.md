@@ -14,4 +14,4 @@ As said, this web application is built to encourage reading, it was built as the
 
 #### Link to the web application
 
-https://github.com/Davvo1/javascript-advanced
+https://davvo1.github.io/javascript-advanced/

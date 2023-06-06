@@ -22,7 +22,7 @@ function submitForm(e) {
     warningMessage.textContent = '';
     warningMessage.classList.remove("warning-message");
 
-    async function contactApi() {
+    async function bookFetch() {
         try {
             bookList.innerHTML = '';
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
@@ -62,12 +62,12 @@ function submitForm(e) {
         }
     }
 
-    contactApi().then(works => {
-        anotherFunction(works);
+    bookFetch().then(works => {
+        worksArray(works);
     });
 }
 
-function anotherFunction(works) {
+function worksArray(works) {
     let keys = works.map(work => work.key);
     const spanItems = document.querySelectorAll(".span-item");
     for (let i = 0; i < works.length; i++) {

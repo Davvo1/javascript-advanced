@@ -23,7 +23,6 @@ function submitForm(e) {
     warningMessage.classList.remove("warning-message");
 
     async function bookFetch() {
-        try {
             bookList.innerHTML = '';
             let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
             if (!response.ok) {
@@ -49,22 +48,19 @@ function submitForm(e) {
                 description.remove();
 
             }
-            loadingElement.style.display = "none";
 
             return obj2.works;
-        } catch (error) {
-            loadingElement.style.display = "none";
-            console.log(error);
-            warningMessage.textContent = "Error fetching data. Please try again later.";
-            warningMessage.classList.add("warning-message");
-            bookList.innerHTML = '';
-            return [];
-        }
     }
 
     bookFetch().then(works => {
         worksArray(works);
-    });
+    }).catch((error) => {
+        console.log(error);
+        warningMessage.textContent = "Error fetching data. Please try again later.";
+        warningMessage.classList.add("warning-message");
+        bookList.innerHTML = '';
+        return [];
+    }).finally(() => loadingElement.style.display = "none");
 }
 
 function worksArray(works) {

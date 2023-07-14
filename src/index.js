@@ -1,4 +1,4 @@
-const submit = document.querySelector("#submit");
+const form = document.querySelector("#form1");
 const bookList = document.querySelector("#book-list");
 const popUp = document.querySelector("#popup");
 const bookDescription = document.querySelector("#book-desc");
@@ -9,7 +9,7 @@ const textbox = document.querySelector("#textbox");
 
 
 
-submit.addEventListener("click", submitForm);
+form.addEventListener("submit", submitForm);
 
 function submitForm(e) {
     const bookGenre = document.querySelector("#input").value.toLowerCase();
@@ -23,33 +23,32 @@ function submitForm(e) {
     warningMessage.classList.remove("warning-message");
 
     async function bookFetch() {
-            bookList.innerHTML = '';
-            let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
-            if (!response.ok) {
-                throw new Error("Error fetching data.");
-            }
+        bookList.innerHTML = '';
+        let response = await fetch(`https://openlibrary.org/subjects/${bookGenre}.json`);
+        if (!response.ok) {
+            throw new Error("Error fetching data.");
+        }
 
-            let obj2 = await response.json();
+        let obj2 = await response.json();
+
+        if (obj2.works.length === 0) {
+            throw new Error("Error fetching works.")
+        }
 
 
-            if (obj2.works.length === 0) {
-                throw new Error("Error fetching works.")
-            }
+        const articlesHTML = obj2.works.map((work) => `
+                <div class="container-item">
+                 <img class="image-item" src="https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg?default=false">
+                <span class="span-item" id="my-span">${work.title}</span>
+                <span class="author">${work.authors[0].name}</span>
+                </div>
+        `);
 
-
-            for (let i = 0; i < obj2.works.length; i++) {
-                const bookItem = document.createElement("div");
-                bookItem.innerHTML = `
-                <img class="image-item" src="https://covers.openlibrary.org/b/id/${obj2.works[i].cover_id}-M.jpg?default=false">
-                <span class="span-item" id="my-span">${obj2.works[i].title}</span>
-                <span class="author">${obj2.works[i].authors[0].name}</span>`
-                bookItem.classList.add("container-item");
-                bookList.append(bookItem);
-                description.remove();
-
-            }
-
-            return obj2.works;
+        const bookItem = document.createElement("div");
+        bookItem.innerHTML = articlesHTML.join('');
+        bookList.append(bookItem);
+        description.remove();
+        return obj2.works;
     }
 
     bookFetch().then(works => {
